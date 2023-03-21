@@ -1,11 +1,20 @@
-const express = require('express');
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+const app = require("./app");
 
-const app = express();
+dotenv.config({ path: ".env" });
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+const DB = process.env.DATABASE.replace(
+  "<PASSWORD>",
+  process.env.DATABASE_PASSWORD
+);
 
-app.listen(3000, () => {
-    console.log('Listening on port 3000');
+mongoose.set("strictQuery", false);
+
+mongoose.connect(DB).then(() => console.log("DB connections successful!"));
+
+const port = 8000;
+
+app.listen(port, () => {
+  console.log(`app is running on port ${port}`);
 });
