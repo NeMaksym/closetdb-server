@@ -3,7 +3,6 @@ const Occasion = require("../models/occasionsModel");
 async function getAllOccasions(req, res, next) {
   try {
     const occasions = await Occasion.find();
-    console.log(occasions);
 
     res.status(200).json({
       status: "success",
