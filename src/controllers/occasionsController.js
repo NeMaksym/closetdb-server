@@ -1,4 +1,4 @@
-const Occasion = require("../Models/occasionsModel");
+const Occasion = require("../models/occasionsModel");
 
 async function getAllOccasions(req, res, next) {
   try {

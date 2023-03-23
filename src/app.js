@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const occasionsRouter = require("./Routers/occasionsRouter");
+const occasionsRouter = require("./routers/occasionsRouter");
 
 app.use(express.json());
 
