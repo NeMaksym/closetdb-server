@@ -23,7 +23,6 @@ async function createOccasion(req, res, next) {
       status: "success",
       data: {
         newOccasion,
-        item,
       },
     });
     next();
