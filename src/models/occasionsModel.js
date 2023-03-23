@@ -5,10 +5,7 @@ const occasionsSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  isEveryDay: {
-    type: Boolean,
-    required: true,
-  },
+  isEveryDay: false,
 });
 
 const Occasion = new mongoose.model("Occasion", occasionsSchema);
