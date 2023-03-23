@@ -13,8 +13,8 @@ mongoose.set("strictQuery", false);
 
 mongoose.connect(DB).then(() => console.log("DB connections successful!"));
 
-const port = 8000;
+const PORT = 8000;
 
-app.listen(port, () => {
-  console.log(`app is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`app is running on port ${PORT}`);
 });
