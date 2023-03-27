@@ -17,14 +17,22 @@ async function getAllOccasions(req, res, next) {
 
 async function createOccasion(req, res, next) {
   try {
-    const newOccasion = await Occasion.create(req.body.title);
+    const isEveryday = req.body.isEveryday;
+
+    if (isEveryday === true) {
+      return res.status(400).json({
+        status: "error",
+        message: "Everyday occasion must be unique",
+      });
+    }
+
+    const newOccasion = await Occasion.create(req.body);
     res.status(201).json({
       status: "success",
       data: {
         newOccasion,
       },
     });
-    next();
   } catch (err) {
     console.log(err);
   }
