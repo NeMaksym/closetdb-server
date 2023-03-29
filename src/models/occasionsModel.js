@@ -4,6 +4,9 @@ const occasionsSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
+    cast: false,
+    minlength: [1, 'Title must have at least one character'],
+    maxlength: [50, 'Title cannot be longer than 50 characters'],
   },
   isEveryDay: false,
 });
