@@ -1,6 +1,6 @@
 const Occasion = require("../models/occasionsModel");
 
-async function getAllOccasions(req, res, next) {
+async function getAllOccasions(req, res) {
   try {
     const occasions = await Occasion.find();
 
@@ -15,9 +15,9 @@ async function getAllOccasions(req, res, next) {
   }
 }
 
-async function createOccasion(req, res, next) {
+async function createOccasion(req, res) {
   try {
-    const {title} = req.body.title
+    const {title} = req.body;
     const newOccasion = await Occasion.create({title});
     res.status(201).json({
       status: "success",
