@@ -17,16 +17,18 @@ async function getAllOccasions(req, res, next) {
 
 async function createOccasion(req, res, next) {
   try {
-    const newOccasion = await Occasion.create(req.body.title);
+    const {title} = req.body.title
+    const newOccasion = await Occasion.create({title});
     res.status(201).json({
       status: "success",
       data: {
         newOccasion,
       },
     });
-    next();
-  } catch (err) {
-    console.log(err);
+    } catch (err) {
+      res.status(400).json({
+        status: "error",
+      })
   }
 }
 
