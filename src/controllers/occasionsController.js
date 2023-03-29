@@ -28,6 +28,7 @@ async function createOccasion(req, res) {
     } catch (err) {
       res.status(400).json({
         status: "error",
+        message: err.message,
       })
   }
 }
