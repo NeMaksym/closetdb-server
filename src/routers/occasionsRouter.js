@@ -5,6 +5,8 @@ const occasionsController = require("../controllers/occasionsController");
 router
   .route("/")
   .get(occasionsController.getAllOccasions)
-  .post(occasionsController.createOccasion);
+  .post(occasionsController.createOccasion)
+  .patch(occasionsController.updateOccasion)
+  .delete(occasionsController.deleteOccasion);
 
 module.exports = router;
