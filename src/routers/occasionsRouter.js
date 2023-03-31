@@ -6,6 +6,7 @@ router
   .route("/")
   .get(occasionsController.getAllOccasions)
   .post(occasionsController.createOccasion)
-  .patch(occasionsController.updateOccasion);
+  .patch(occasionsController.updateOccasion)
+  .delete(occasionsController.deleteOccasion);
 
 module.exports = router;

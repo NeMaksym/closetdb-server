@@ -55,8 +55,26 @@ async function updateOccasion(req, res, next) {
   }
 }
 
+async function deleteOccasion(req, res, next) {
+  try {
+    if (!req.body._id) throw Error;
+
+    const doc = await Occasion.findByIdAndDelete(req.body._id);
+
+    res.status(200).json({
+      status: "success",
+    });
+  } catch (err) {
+    return res.status(400).json({
+      status: "error",
+      message: "No occasion with that Id",
+    });
+  }
+}
+
 module.exports = {
   getAllOccasions,
   createOccasion,
   updateOccasion,
+  deleteOccasion,
 };
