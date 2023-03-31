@@ -30,7 +30,33 @@ async function createOccasion(req, res, next) {
   }
 }
 
+async function updateOccasion(req, res, next) {
+  try {
+    const notAllowedParams = "isEveryday";
+
+    if (req.body.hasOwnProperty(notAllowedParams)) throw Error;
+
+    const doc = await Occasion.findByIdAndUpdate(req.body._id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        doc,
+      },
+    });
+  } catch (err) {
+    return res.status(400).json({
+      status: "error",
+      message: "This field cannot be changed",
+    });
+  }
+}
+
 module.exports = {
   getAllOccasions,
   createOccasion,
+  updateOccasion,
 };
