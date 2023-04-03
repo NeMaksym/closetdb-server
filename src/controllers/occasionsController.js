@@ -11,7 +11,10 @@ async function getAllOccasions(req, res, next) {
       },
     });
   } catch (err) {
-    console.log(err);
+    return res.status(400).json({
+      status: 'error',
+      message: err.message,
+    });
   }
 }
 
@@ -26,7 +29,10 @@ async function createOccasion(req, res, next) {
     });
     next();
   } catch (err) {
-    console.log(err);
+    return res.status(400).json({
+      status: 'error',
+      message: err.message,
+    });
   }
 }
 
@@ -50,7 +56,7 @@ async function updateOccasion(req, res, next) {
   } catch (err) {
     return res.status(400).json({
       status: 'error',
-      message: 'This field cannot be changed',
+      message: err.message,
     });
   }
 }
@@ -67,7 +73,7 @@ async function deleteOccasion(req, res, next) {
   } catch (err) {
     return res.status(400).json({
       status: 'error',
-      message: 'No occasion with that Id',
+      message: err.message,
     });
   }
 }
