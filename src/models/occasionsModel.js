@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const occasionsSchema = mongoose.Schema({
   title: {
@@ -8,6 +8,6 @@ const occasionsSchema = mongoose.Schema({
   isEveryDay: false,
 });
 
-const Occasion = new mongoose.model("Occasion", occasionsSchema);
+const Occasion = new mongoose.model('Occasion', occasionsSchema);
 
 module.exports = Occasion;
