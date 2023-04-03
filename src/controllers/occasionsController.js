@@ -39,14 +39,14 @@ async function createOccasion(req, res, next) {
 
 async function updateOccasion(req, res, next) {
   try {
-    const notAllowedParams = 'isEveryday';
+    if (!req.body.title) throw new Error('Please provide a title to update');
 
-    if (req.body.hasOwnProperty(notAllowedParams)) throw Error;
-
-    const doc = await Occasion.findByIdAndUpdate(req.body._id, req.body, {
+    const doc = await Occasion.findByIdAndUpdate(req.body.id, req.body.title, {
       new: true,
       runValidators: true,
     });
+
+    if (!doc) throw new Error('No document with a specified Id');
 
     res.status(200).json({
       status: 'success',
