@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const occasionsSchema = mongoose.Schema({
   title: {
@@ -8,9 +8,12 @@ const occasionsSchema = mongoose.Schema({
     minlength: [1, 'Title must have at least one character'],
     maxlength: [50, 'Title cannot be longer than 50 characters'],
   },
-  isEveryDay: false,
+  isEveryDay: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const Occasion = new mongoose.model("Occasion", occasionsSchema);
+const Occasion = new mongoose.model('Occasion', occasionsSchema);
 
 module.exports = Occasion;
